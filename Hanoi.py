@@ -40,25 +40,13 @@ def hanoi(number_of_discs: int):
         A.append(i)
 
     # previous move
-    p = A[0]
+    p = None
 
     A.append(2*number_of_discs)
     B.append(2*number_of_discs)
     C.append(2*number_of_discs)
 
     step = 0
-    if n == 1:
-        C.insert(0, A.pop(0))
-        p = C[0]
-        step += 1
-    elif n == 0:
-        B.insert(0, A.pop(0))
-        p = B[0]
-        step += 1
-
-    for poll in polls:
-        print(poll[:-1])
-    print('\n')
 
     while step < pow(2, number_of_discs)-1:
 
@@ -70,7 +58,7 @@ def hanoi(number_of_discs: int):
                     polls[(i+1) % 3].insert(0, poll.pop(0))
                     p = polls[(i+1) % 3][0]
                     break
-                elif not fractal_tup[step]-n % 2:
+                else:
                     polls[(i + 2) % 3].insert(0, poll.pop(0))
                     p = polls[(i + 2) % 3][0]
                     break
@@ -93,5 +81,5 @@ def hanoi(number_of_discs: int):
 
 
 if __name__ == "__main__":
-    hanoi(14)
+    hanoi(20)
 
